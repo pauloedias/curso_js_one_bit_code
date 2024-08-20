@@ -12,7 +12,10 @@ console.log(subt)
 console.log (mult)
 console.log(divisao)
 
-alert(soma)
-alert(subt)
-alert(mult)
-alert(divisao)
+alert(
+    "Resultados:\n" +
+    "\nSoma: " + soma +
+    "\nSubtração: " + subt +
+    "\nMultiplicação: " + mult +
+    "\nDivisão: " + divisao
+  )
