@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Tecnologia e Tempo de Experiência</title>
+    <style>
+        .input-row {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Adicionar Tecnologias e Tempo de Experiência</h2>
+    <form id="techForm">
+        <div id="inputContainer">
+            <!-- As novas linhas de inputs serão adicionadas aqui -->
+        </div>
+        <button type="button" id="addButton">Adicionar Tecnologia</button>
+        <br>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Opções de tempo de experiência
+            var experienceOptions = [
+                { label: '0-2 anos', value: '0-2' },
+                { label: '3-4 anos', value: '3-4' },
+                { label: '5+ anos', value: '5+' }
+            ];
+
+            // Botão de adicionar tecnologia
+            document.getElementById('addButton').addEventListener('click', function() {
+                // Cria uma nova div para a linha de inputs
+                var newRow = document.createElement('div');
+                newRow.className = 'input-row';
+
+                // Cria o campo de texto para o nome da tecnologia
+                var input = document.createElement('input');
+                input.type = 'text';
+                input.name = 'technology[]';
+                input.placeholder = 'Nome da tecnologia';
+                input.required = true;
+
+                // Adiciona o campo de texto à nova linha
+                newRow.appendChild(input);
+
+                // Cria o grupo de botões radio para o tempo de experiência
+                experienceOptions.forEach(function(option) {
+                    // Cria o input radio
+                    var radioInput = document.createElement('input');
+                    radioInput.type = 'radio';
+                    radioInput.name = `experience_${document.getElementsByClassName('input-row').length}`;
+                    radioInput.value = option.value;
+                    radioInput.required = true;
+
+                    // Cria o rótulo para o botão de rádio
+                    var label = document.createElement('label');
+                    label.textContent = option.label;
+
+                    // Adiciona o input ao label e o label à nova linha
+                    label.prepend(radioInput);
+                    newRow.appendChild(label);
+                });
+
+                // Adiciona a nova linha ao container de inputs
+                document.getElementById('inputContainer').appendChild(newRow);
+            });
+        });
+    </script>
+</body>
+</html>
